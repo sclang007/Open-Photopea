@@ -1,0 +1,116 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<link rel="stylesheet" href="https://blog.photopea.com/wp-content/themes/simplex/style.css" type="text/css" media="screen" />
+	<link rel='stylesheet' id='casper-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Noto+Serif%3A400%2C700%2C400italic%7COpen+Sans%3A700%2C400&amp;ver=4.0.1' type='text/css' media='all' />
+	
+	<title>Photopea API</title>
+	
+			
+	</head>
+
+	<body>
+<div id="page">
+	<div id="header"> 
+		<a href="../index.html" class="title">Photopea API</a> 
+		<!--<p>Web-based image editor.</p>-->
+		<a href="https://blog.photopea.com">Blog</a> |
+		<a href="../learn/index.html">Learn</a> |
+		<a href="../tuts/index.html">Tutorials</a> |
+		<a class="curr" href="index.html">API</a> |
+		<a href="https://www.facebook.com/photopea">Facebook</a> |
+		<a href="https://www.twitter.com/photopeacom">Twitter</a> 
+	</div>
+	
+	<div id="main" style="max-width:960px;">
+		<div id="sidebar" style="width:20%;">
+			<!--<h3>Topics</h3>-->
+			<ul>
+						<li class="lvl0"><a href="index.html">API Spec</a></li>
+			<li class="lvl1"><a href="environment.html">Environment</a></li>
+			<li class="lvl1 active"><a href="live.html">Live Messaging</a></li>
+			<li class="lvl1"><a href="plugins.html">Plugins</a></li>
+			<li class="lvl0"><a href="playground.html">Playground</a></li>
+			<li class="lvl0"><a href="demo.html">Demo</a></li>
+			<li class="lvl0"><a href="accounts.html">Accounts</a></li>
+			</ul>
+		</div>
+		<div id="content" style="width:80%;">
+
+			<div class="post">
+				<h1>Live Messaging</h1>
+			
+	<p>You can insert Photopea into a webpage (using a frame). Let's call such webpage the <b>Outer Environment (OE)</b>.
+	OE can communicate with Photopea through <a href="http://web.archive.org/web/20150331203017/http://www.w3.org/TR/webmessaging/">Web Messaging</a>.
+	</p>
+			
+	<pre>window.addEventListener("message", function(e) { alert(e.data); });
+var wnd = document.getElementById("pp").contentWindow;
+wnd.postMessage(msg, "*");</pre>
+
+	
+	<p>OE can send <b>two kinds of data</b> to Photopea:</p>
+	
+	<ul>
+		<li><b>String</b> - contains a script, which will be executed by Photopea</li>
+		<li><b>ArrayBuffer</b> - a binary file: psd, svg, jpg, ...  fonts, brushes, ...</li>
+	</ul>
+	
+	<p>When Photopea is initialized and ready to accept commands, it sends the message "done". 
+	After your message is processed, Photopea also sends back the message <code>"done"</code>.</p> 
+	
+	<ul>
+	<li>Demo: <a href="https://jsfiddle.net/qu4Lfk2k/57/">Wait for "done", then send a script</a></li>
+	<li>Demo: <a href="https://jsfiddle.net/qu4Lfk2k/59/">Load a file (as ArrayBuffer) and give it to Photopea</a></li>
+	</ul>
+	
+	<h2>Retrieving data from Photopea</h2>
+
+	<p>Photopea can send the current image to OE using the following command (inside a script):</p>
+	
+	<pre>app.activeDocument.saveToOE("gif");</pre>
+	
+	<p>The full description at <a href="../learn/scripts.html">/learn/scripts</a>. The image will be sent as ArrayBuffer.</p>
+	
+	<p>After you run the script above, PP will send a message with an ArrayBuffer of a GIF image,
+	followed by a message with a String "done" (processing the script has finished).</p>
+	
+	<h2>Examples of usage</h2>
+	
+	<p>This API can replace the main API. Instad of letting Photopea communicate with your server directly, 
+	you can load files inside your progrm and transfer them to and from Photopea in a clients device.
+	<!--E.g. you can recreate the autosave feature (by calling <code>saveToOE()</code> in regular intervals).--></p>
+	
+	<p>You can use Photopea as a "module", hide its UI and use only the messaging. 
+	You can create a batch-processor of images (resizing images, adding watermarks, converting between formats).
+	You can make scripts, that would export each layer of the document as a PNG. 
+	You can make scripts, that would replace the text in each text layer by data from your user (to create a generator of business cards, etc.).</p>			</div>
+		</div>
+	</div>
+		
+	<div id="disqus_thread"></div>
+	<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+	this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+	var d = document, s = d.createElement('script');
+	s.src = '//photopeablog.disqus.com/embed.js';
+	s.setAttribute('data-timestamp', +new Date());
+	(d.head || d.body).appendChild(s);
+	})();
+	</script>
+	 
+</div>
+	
+</html>

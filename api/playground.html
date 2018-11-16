@@ -1,0 +1,115 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<link rel="stylesheet" href="https://blog.photopea.com/wp-content/themes/simplex/style.css" type="text/css" media="screen" />
+	<link rel='stylesheet' id='casper-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Noto+Serif%3A400%2C700%2C400italic%7COpen+Sans%3A700%2C400&amp;ver=4.0.1' type='text/css' media='all' />
+	
+	<title>Photopea API</title>
+	
+			
+	</head>
+
+	<body>
+<div id="page">
+	<div id="header"> 
+		<a href="../index.html" class="title">Photopea API</a> 
+		<!--<p>Web-based image editor.</p>-->
+		<a href="https://blog.photopea.com">Blog</a> |
+		<a href="../learn/index.html">Learn</a> |
+		<a href="../tuts/index.html">Tutorials</a> |
+		<a class="curr" href="index.html">API</a> |
+		<a href="https://www.facebook.com/photopea">Facebook</a> |
+		<a href="https://www.twitter.com/photopeacom">Twitter</a> 
+	</div>
+	
+	<div id="main" style="max-width:960px;">
+		<div id="sidebar" style="width:20%;">
+			<!--<h3>Topics</h3>-->
+			<ul>
+						<li class="lvl0"><a href="index.html">API Spec</a></li>
+			<li class="lvl1"><a href="environment.html">Environment</a></li>
+			<li class="lvl1"><a href="live.html">Live Messaging</a></li>
+			<li class="lvl1"><a href="plugins.html">Plugins</a></li>
+			<li class="lvl0 active"><a href="playground.html">Playground</a></li>
+			<li class="lvl0"><a href="demo.html">Demo</a></li>
+			<li class="lvl0"><a href="accounts.html">Accounts</a></li>
+			</ul>
+		</div>
+		<div id="content" style="width:80%;">
+
+			<div class="post">
+							
+			<script>
+				//window.addEventListener("message", function(e) { alert(e.data); });
+				var frame = null;
+			
+				function updatePlayground(e)
+				{
+					var json = document.getElementById("json").value;
+					json = JSON.stringify(JSON.parse(json));
+					var url = "https://www.photopea.com";
+					var end = "#"+encodeURI(json);
+					document.getElementById("url").value = url+end;
+					frame = document.getElementById("pp");
+					frame.src = url+"?rnd="+Math.floor(Math.random()*0xffffffff)+end;
+					//frame.contentWindow.location.reload(true);
+					//wnd.postMessage(script, "*");
+				}
+				function runScript(e)
+				{
+					var script = document.getElementById("script").value;
+					frame.contentWindow.postMessage(script,"*");
+				}
+				document.body.onload = updatePlayground;
+			</script>
+			
+			<h1>Playground</h1>
+			<p>Enter the JSON configuration file, which will be encoded into the URL:</p>
+			<textarea rows="8", style="width:100%;" id="json">{
+    "files": [ 
+        "https://www.photopea.com/api/img/pug.png"
+    ],
+    "environment": {
+        
+    }
+}</textarea>
+			<button onclick="updatePlayground()" style="display:block;  font-size:1.2em;" >Update</button>  <br />
+			
+			<b>URL:</b>
+			<textarea rows="3", style="width:100%;" id="url"></textarea>	
+
+			<iframe src="" id="pp" style="border:none; width:100%; height:500px;"></iframe>		
+
+			<h2>Run a script</h2>
+			<textarea rows="4", style="width:100%;" id="script">app.activeDocument.activeLayer.translate(20,20);</textarea>
+			<button onclick="runScript()" style="display:block;  font-size:1.2em;">Run</button> <br />			
+						</div>
+		</div>
+	</div>
+		
+	<div id="disqus_thread"></div>
+	<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+	this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+	var d = document, s = d.createElement('script');
+	s.src = '//photopeablog.disqus.com/embed.js';
+	s.setAttribute('data-timestamp', +new Date());
+	(d.head || d.body).appendChild(s);
+	})();
+	</script>
+	 
+</div>
+	
+</html>

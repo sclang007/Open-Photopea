@@ -1,0 +1,143 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
+
+	<title>Photopea - Open and Save</title>
+
+	<link rel="stylesheet" href="https://blog.photopea.com/wp-content/themes/simplex/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" />
+</head>
+
+<body>
+<div id="page">
+	<div id="header"> 
+		<a href="index.html" class="title">Learn Photopea</a> 
+		<!--<p>Web-based image editor.</p>-->
+		<a href="https://blog.photopea.com">Blog</a> |
+		<a class="curr" href="index.html">Learn</a> |
+		<a href="../tuts/index.html">Tutorials</a> |
+		<a href="../api/index.html">API</a> |
+		<a href="https://www.facebook.com/photopea">Facebook</a> |
+		<a href="https://www.twitter.com/photopeacom">Twitter</a> 
+	</div>	
+	<div id="main" style="max-width:1000px;">
+		<div id="sidebar" style="width:22%;">
+			<h3>Topics</h3>
+			<ul>
+			<li class="lvl0"><a href="index.html">Introduction</a></li>
+			<li class="lvl0"><a href="workspace.html">Workspace</a></li>
+			<li class="lvl1 active"><a href="opening-saving.html">Open and Save</a></li>
+			<li class="lvl1"><a href="navigation.html">Navigation</a></li>
+			<li class="lvl1"><a href="image-size.html">Image size</a></li>
+			<li class="lvl0"><a href="layers.html">Layers</a></li>
+			<li class="lvl1"><a href="masks.html">Masks</a></li>
+			<li class="lvl1"><a href="layer-styles.html">Layer Styles</a></li>
+			<li class="lvl1"><a href="smart-objects.html">Smart Objects</a></li>
+			<li class="lvl1"><a href="other-layers.html">Other Layers</a></li>
+			<li class="lvl0"><a href="layer-manipulation.html">Layer Editing</a></li>
+			<li class="lvl1"><a href="free-transform.html">Free Transform</a></li>
+			<li class="lvl1"><a href="adjustments-filters.html">Adjust. &amp; Filters</a></li>
+			<li class="lvl0"><a href="selections.html">Selections</a></li>
+			<li class="lvl1"><a href="creating-selections.html">Make Selections</a></li>
+			<li class="lvl1"><a href="advanced-selecting.html">Advanced Selecting</a></li>
+			<li class="lvl1"><a href="refine-edge.html">Refine Edge</a></li>
+			<li class="lvl1"><a href="moving-selected-data.html">Move Selected Data</a></li>
+			<li class="lvl0"><a href="brush-tools.html">Brush Tools</a></li>
+			<li class="lvl1"><a href="bt-basic.html">Basic Tools</a></li>
+			<li class="lvl1"><a href="bt-advanced.html">Advanced Tools</a></li>
+			<li class="lvl1"><a href="bt-smart.html">Smart Tools</a></li>
+			<li class="lvl0"><a href="text.html">Text</a></li>
+			<li class="lvl1"><a href="text-style.html">Text Style</a></li>
+			<li class="lvl0"><a href="vector-graphics.html">Vector Graphics</a></li>
+			<li class="lvl1"><a href="vg-structure.html">The Structure</a></li>
+			<li class="lvl1"><a href="vg-manipulation.html">Editing Shapes</a></li>
+			<li class="lvl1"><a href="vg-creating.html">Creating Shapes</a></li>
+			<li class="lvl0"><a href="other.html">Other</a></li>
+			<li class="lvl1"><a href="guides-grid-snapping.html">Guides &amp; Snapping</a></li>
+			<li class="lvl1"><a href="animations.html">Animations</a></li>
+			<li class="lvl1"><a href="layer-comps.html">Layer Comps</a></li>
+			<li class="lvl1"><a href="scripts.html">Scripts</a></li>
+			</ul>
+		</div>
+		<div id="content" style="width:78%;">
+			<div class="post">			
+<h1>Opening and Saving files</h1>
+
+<p>Digital graphics is usually stored as a <b>raster</b> image, or a <b>vector</b> image.
+There are many formats for saving and distributing different types of graphics.
+Let's mention <b>PNG and JPG</b>, which contain a single-layer rectangular raster image (a grid of pixels).</p>
+
+<p>Image editors usually have their own file formats, that besides raster and vector graphics contain additional information,
+which can be useful for changing the image in the future. For example, when we add a text into an image and save it as a PNG,
+letters would become pixels and such text would be hard to change 
+(we would have to guess the font family, character size, the original image behind the letters would be lost).</p>
+
+<p>Photopea uses the <a href="https://en.wikipedia.org/wiki/Adobe_Photoshop#File_format">PSD format</a> as the main format
+for storing image documents with an additional information. It was designed for the use in Adobe Photoshop and became very popular since then.
+All files, that you open in Photopea (such as PNG, JPG, Sketch) are converted to PSD (when they are not PSDs already). When you finish editing,
+the result can be saved from the PSD to other formats.</p>
+
+<p>Photopea also supports many kinds of resources, that can be used for editing the image.
+You can load your own brushes, gradients, fonts and more, the same way you open images.</p>
+
+<h2 id="opening">Opening files</h2>
+<p>There are several ways of opening files. The standard way is through the <b>Open dialog</b> (File - Open). 
+You can also paste images (from the system clipboard) simply by pressing Ctrl + V. 
+Another way is to open files by dragging them from your local system and dropping them into the Photopea environment inside a web browser.</p>
+
+<p>When you have no documents open, dropped files will be opened in a regular way.
+When some documents are already open in Photopea, you can drop new document into the main area of the current document.
+The new file will be inserted into the current document as a new layer (a Smart Object layer).</p>
+
+<p>When some documents are opened, you can drop new files into the top bar of the main area (which contains the list of opened documents).
+Then, new files will be opened separately.</p>
+
+<img src="https://i.imgur.com/UNQ83Wm.png" class="fullw" />
+
+<p>There is an experimental feature, which allows you <b>take pictures</b> using the camera of your device right inside Photopea. Press File - Take a picture to take a picture.</p>
+
+<h2 id="saving">Saving files</h2>
+
+<p>You can save your work as a PSD file (to preserve the whole structure of the document) using <b>File - Save as PSD</b>.
+You can also save your file for the distribution on the web (through JPG, PNG, SVG, PDF and other formats) using <b>File - Export - PNG</b>, JPG etc.</p>
+
+<p>The Save for Web window lets you choose the otuput format. You can also enter the resolution of the output image.
+Now, you can already use Photopea to resize images (File - Open, File - Export - Format, enter the new size ...).</p>
+
+<p>When a file comes from your device, the <b>File - Save</b> option will not wokr 
+(Photopea is just a website, and it can not rewrite files in your device) - you have to use Save as PSD instead.
+But if you opened your file from Google Drive, or as a Smart Object, or from a server (using the API), 
+File - Save will save your file to a correct destination.</p>
+
+<p>The <b>Move tool</b> (the first tool, that is enabled when you start Photopea) lets you quickly export specific parts of the image.
+Right-click any object and press Get PNG or Get SVG. Or select multiple layers and press Get PNG / Get SVG in the top menu.</p>
+			
+			</div>
+			
+			<h2 style="margin-top: 4em">Comments</h2>
+			<div id="disqus_thread"></div>
+			<script>   
+			(function() { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://learn-photopea.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+			})();   
+			</script>	
+		</div>
+	</div>
+	<div id="footer">&copy; 2013-2018 support@photopea.com</div>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-4249565-43', 'auto');  ga('send', 'pageview');
+	</script>
+</div>
+</html>

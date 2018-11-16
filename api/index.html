@@ -1,0 +1,180 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+	<link rel="stylesheet" href="https://blog.photopea.com/wp-content/themes/simplex/style.css" type="text/css" media="screen" />
+	<link rel='stylesheet' id='casper-google-fonts-css'  href='https://fonts.googleapis.com/css?family=Noto+Serif%3A400%2C700%2C400italic%7COpen+Sans%3A700%2C400&amp;ver=4.0.1' type='text/css' media='all' />
+	
+	<title>Photopea API</title>
+	
+			
+	</head>
+
+	<body>
+<div id="page">
+	<div id="header"> 
+		<a href="../index.html" class="title">Photopea API</a> 
+		<!--<p>Web-based image editor.</p>-->
+		<a href="https://blog.photopea.com">Blog</a> |
+		<a href="../learn/index.html">Learn</a> |
+		<a href="../tuts/index.html">Tutorials</a> |
+		<a class="curr" href="index.html">API</a> |
+		<a href="https://www.facebook.com/photopea">Facebook</a> |
+		<a href="https://www.twitter.com/photopeacom">Twitter</a> 
+	</div>
+	
+	<div id="main" style="max-width:960px;">
+		<div id="sidebar" style="width:20%;">
+			<!--<h3>Topics</h3>-->
+			<ul>
+						<li class="lvl0 active"><a href="index.html">API Spec</a></li>
+			<li class="lvl1"><a href="environment.html">Environment</a></li>
+			<li class="lvl1"><a href="live.html">Live Messaging</a></li>
+			<li class="lvl1"><a href="plugins.html">Plugins</a></li>
+			<li class="lvl0"><a href="playground.html">Playground</a></li>
+			<li class="lvl0"><a href="demo.html">Demo</a></li>
+			<li class="lvl0"><a href="accounts.html">Accounts</a></li>
+			</ul>
+		</div>
+		<div id="content" style="width:80%;">
+
+			<div class="post">
+				<h1>Passing data to Photopea</h1>
+
+			<!--<p>* * * You can also use <a href="live.html">Live Messaging</a> to get files to and from Photopea.</p>-->
+			
+			<p>Photopea can be configured using a parameter after a hash sign.</p>
+			
+			<pre>https://www.photopea.com#STRING_VALUE</pre>
+			
+			<p>String value is encoded into the URL using classic encoding of query parameters (space as %20 etc.). 
+			It corresponds to <strong>encodeURI()</strong> in Javascript or <strong>urlencode()</strong> in PHP. 
+			This string contains a JSON object.</p>
+		
+		
+			<h3>JSON configuration object</h3>
+			<p>JSON object must have the following structure:</p>
+				
+<pre>{
+	"files" : [
+		"https://www.mysite.com/images/design.psd",
+		"https://www.mysite.com/images/button.png",
+		"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAA\
+		AAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+	],
+	"resources" : [
+		"https://www.xyz.com/brushes/Nature.ABR",
+		"https://www.xyz.com/grads/Gradients.GRD",
+		"https://www.xyz.com/fonts/NewFont.otf"
+	],
+	"server" : {
+		"url" : "https://www.myserver.com/saveImage.php",
+		"formats" : [ "psd:true", "png", "jpg:0.5" ]
+	},
+	"environment" : {...},
+	"script" : "app.activeDocument.resizeCanvas(90,80,AnchorPosition.TOPLEFT);"
+}</pre>
+			<p>
+				Data URIs can be used - file can be passed inside request (<a target="_new" href="../index.html#%7B%22files%22:%5B%22data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==%22%5D%7D">test</a>).
+				All parameters are optional.
+			</p>
+			<h3>Parameters</h3>
+			<ul>
+				<li><code>files</code> - array of files, that are loaded when Photopea starts</li>
+				<li><code>resources</code> - array of resources (gradients, brushes, fonts ...)</li>
+				<li>
+					<code>server</code> - parameters for saving documents back to a server
+					<ul>
+						<li><code>url</code> - URL address of a server</li>
+						<li><code>formats</code> - formats, in which a document should be sent to a server. 
+						The string format corresponds to <a href="../learn/scripts.html">saveToOE</a>.</li>
+					</ul>
+				</li>
+				<li>
+					<code>environment</code> - parameters of the environment, see <a href="environment.html">Environment</a>
+				</li>
+				<li>
+					<code>script</code> - the <a href="../learn/scripts.html">script</a>, that should be executed after loading each file (can be long)
+				</li>
+			</ul>
+			
+			<h2>Saving to server</h2>
+			
+			<p>When <code>server</code> parameter is specified in a request to Photopea.com, every document opened in Photopea will have <code>File - Save</code> option. 
+			After a user clicks it, document data are sent to your server in HTTP request using POST method. 
+			It will contain a single string parameter <code>p</code>. The string contains a JSON object with the following structure:</p>
+			
+			<pre>{
+	"source" : "https://www.mysite.com/images/button.png",
+	"versions" : [
+		{"format":"psd", "data": "..."},
+		{"format":"jpg", "data": "..."},
+		...
+	]
+}</pre>
+			<h3>Parameters</h3>
+			<ul>
+				<li><code>source</code> - if the file was loaded from your server, the value is the URL of this document.
+					Otherwise (opening a local file, creating an empty file), it contains <code>"local,X,NAME"</code>, 
+					where X is the integer ID of the document, and NAME is the name of the document</li>
+				<li>
+					<code>versions</code> different versions of your document
+					<ul>
+						<li><code>format</code> - format of the file, exported from Photopea</li>
+						<li><code>data</code> - binary data, encoded into a string using <a href="http://en.wikipedia.org/wiki/Base64">Base64</a> encoding </li>
+					</ul>
+				</li>
+			</ul>
+			
+			<p>Here is a short PHP example, which accepts files from Photopea.</p>
+			
+			<pre>$p = json_decode( $_POST["p"] );	// parse JSON
+// getting file name from "source";
+$fname = substr ($p->source, strrpos($p->source,"/")+1);	
+file_put_contents("images/".$fname, base64_decode( $p->versions[0]->data ));</pre>
+			
+			
+			<h2>Cross-Origin Resource Sharing</h2>
+			
+			<p>For security reasons, webapps can access only files from the same domain. 
+			In order to let Photopea load your file, the response of your server must contain the following header:<p>
+			
+			<pre>Access-Control-Allow-Origin: *</pre>
+			
+			<p>Find out more at <a href="http://www.w3.org/TR/cors/">CORS specification</a> or at <a href="http://enable-cors.org/">enable-cors.org</a>.</p> 
+			
+			<h2>Prices</h2>
+			
+			<p>Usage of Photopea API is completely free. Keep in mind, that PP is in early stages of development and there may be critical bugs.
+			We do not take any responsibility for documents edited or generated by Photopea.</p>
+			
+			<p>Please, let us know in advance (support@photopea.com), when you expect to have a large regular traffic (thousands of visitors per day).</p>
+						</div>
+		</div>
+	</div>
+		
+	<div id="disqus_thread"></div>
+	<script>
+
+	/**
+	*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+	*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+	/*
+	var disqus_config = function () {
+	this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+	this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	};
+	*/
+	(function() { // DON'T EDIT BELOW THIS LINE
+	var d = document, s = d.createElement('script');
+	s.src = '//photopeablog.disqus.com/embed.js';
+	s.setAttribute('data-timestamp', +new Date());
+	(d.head || d.body).appendChild(s);
+	})();
+	</script>
+	 
+</div>
+	
+</html>

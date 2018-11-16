@@ -1,0 +1,127 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
+
+	<title>Photopea - Layer Editing</title>
+
+	<link rel="stylesheet" href="https://blog.photopea.com/wp-content/themes/simplex/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" />
+</head>
+
+<body>
+<div id="page">
+	<div id="header"> 
+		<a href="index.html" class="title">Learn Photopea</a> 
+		<!--<p>Web-based image editor.</p>-->
+		<a href="https://blog.photopea.com">Blog</a> |
+		<a class="curr" href="index.html">Learn</a> |
+		<a href="../tuts/index.html">Tutorials</a> |
+		<a href="../api/index.html">API</a> |
+		<a href="https://www.facebook.com/photopea">Facebook</a> |
+		<a href="https://www.twitter.com/photopeacom">Twitter</a> 
+	</div>	
+	<div id="main" style="max-width:1000px;">
+		<div id="sidebar" style="width:22%;">
+			<h3>Topics</h3>
+			<ul>
+			<li class="lvl0"><a href="index.html">Introduction</a></li>
+			<li class="lvl0"><a href="workspace.html">Workspace</a></li>
+			<li class="lvl1"><a href="opening-saving.html">Open and Save</a></li>
+			<li class="lvl1"><a href="navigation.html">Navigation</a></li>
+			<li class="lvl1"><a href="image-size.html">Image size</a></li>
+			<li class="lvl0"><a href="layers.html">Layers</a></li>
+			<li class="lvl1"><a href="masks.html">Masks</a></li>
+			<li class="lvl1"><a href="layer-styles.html">Layer Styles</a></li>
+			<li class="lvl1"><a href="smart-objects.html">Smart Objects</a></li>
+			<li class="lvl1"><a href="other-layers.html">Other Layers</a></li>
+			<li class="lvl0 active"><a href="layer-manipulation.html">Layer Editing</a></li>
+			<li class="lvl1"><a href="free-transform.html">Free Transform</a></li>
+			<li class="lvl1"><a href="adjustments-filters.html">Adjust. &amp; Filters</a></li>
+			<li class="lvl0"><a href="selections.html">Selections</a></li>
+			<li class="lvl1"><a href="creating-selections.html">Make Selections</a></li>
+			<li class="lvl1"><a href="advanced-selecting.html">Advanced Selecting</a></li>
+			<li class="lvl1"><a href="refine-edge.html">Refine Edge</a></li>
+			<li class="lvl1"><a href="moving-selected-data.html">Move Selected Data</a></li>
+			<li class="lvl0"><a href="brush-tools.html">Brush Tools</a></li>
+			<li class="lvl1"><a href="bt-basic.html">Basic Tools</a></li>
+			<li class="lvl1"><a href="bt-advanced.html">Advanced Tools</a></li>
+			<li class="lvl1"><a href="bt-smart.html">Smart Tools</a></li>
+			<li class="lvl0"><a href="text.html">Text</a></li>
+			<li class="lvl1"><a href="text-style.html">Text Style</a></li>
+			<li class="lvl0"><a href="vector-graphics.html">Vector Graphics</a></li>
+			<li class="lvl1"><a href="vg-structure.html">The Structure</a></li>
+			<li class="lvl1"><a href="vg-manipulation.html">Editing Shapes</a></li>
+			<li class="lvl1"><a href="vg-creating.html">Creating Shapes</a></li>
+			<li class="lvl0"><a href="other.html">Other</a></li>
+			<li class="lvl1"><a href="guides-grid-snapping.html">Guides &amp; Snapping</a></li>
+			<li class="lvl1"><a href="animations.html">Animations</a></li>
+			<li class="lvl1"><a href="layer-comps.html">Layer Comps</a></li>
+			<li class="lvl1"><a href="scripts.html">Scripts</a></li>
+			</ul>
+		</div>
+		<div id="content" style="width:78%;">
+			<div class="post">			
+<h1>Layer Manipulation</h1>
+
+<p>Photopea offers you many ways to manipulate layers. You can move them, rotate, bend etc.</p>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0885095539348241"
+     data-ad-slot="5352893134"></ins>
+<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+<h2><img class="inline" src="../img/tools/move.png" />Move Tool</h2>
+
+<p>The Move tool is the basic tool for moving layers and their parts. It is the first tool in the toolbar. 
+It can be enabled temporarily by pressing Ctrl key (after releasing Ctrl, you will return to your previous tool).
+By default, it will move all layers, that are currently selected (in the Layers panel).
+Note, that it is enough to select just the folder, to move all its content.</p>
+
+<p>If you select just the mask of the layer, and that mask is not linked to the main content, the Move tool will move the mask only.
+Similarly, you can move only the main content, without moving the mask.</p>
+
+<p>When the Move tool is active, you can move object also with cursor keys ("arrows") on your keyboard.
+One keypress will move the content by one pixel. If you hold Shift, content will be moved in ten pixel steps.</p>
+
+<p>The Move tool has the <b>auto-select feature</b>, which can be enabled in the top menu, or temporarily by holding Ctrl key.
+With auto-select enabled, you can press anywhere in the image, and Photopea will automatically detect the closest layer under your cursor,
+and make it selected (in the Layers panel). This way, you don't have to select layrs manually in the Layers panel, but it is enough to click on them.
+Of course, if some layer is completely covered by another layer, you can not select it this way.</p>
+
+<h2>Aligning objects</h2>
+
+<p>Sometimes you want to align two or more layers together (e.g. so they all have centers at the same point,
+or to get their upper edge to the same height). Just select multiple layers and use <b>one of six buttons</b>
+in the top menu of the Move tool, to align these layers.</p>			
+			</div>
+			
+			<h2 style="margin-top: 4em">Comments</h2>
+			<div id="disqus_thread"></div>
+			<script>   
+			(function() { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://learn-photopea.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+			})();   
+			</script>	
+		</div>
+	</div>
+	<div id="footer">&copy; 2013-2018 support@photopea.com</div>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-4249565-43', 'auto');  ga('send', 'pageview');
+	</script>
+</div>
+</html>

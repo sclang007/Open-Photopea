@@ -1,0 +1,12 @@
+{
+	"name": "Photopea",
+	"short_name": "Photopea",
+	"display": "standalone",
+	"icons": [  
+		{  "src": "promo/icon192.png", "type": "image/png", "sizes": "192x192"  },
+		{  "src": "promo/icon512.png", "type": "image/png", "sizes": "512x512"  }  
+	],
+	"start_url": "/?utm_source=homescreen",
+	"background_color":"#0f171d",
+	"theme_color": "#474747"
+}

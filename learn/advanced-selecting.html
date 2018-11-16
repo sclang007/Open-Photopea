@@ -1,0 +1,154 @@
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+		<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0" />
+
+	<title>Photopea - Advanced Selecting</title>
+
+	<link rel="stylesheet" href="https://blog.photopea.com/wp-content/themes/simplex/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i" />
+</head>
+
+<body>
+<div id="page">
+	<div id="header"> 
+		<a href="index.html" class="title">Learn Photopea</a> 
+		<!--<p>Web-based image editor.</p>-->
+		<a href="https://blog.photopea.com">Blog</a> |
+		<a class="curr" href="index.html">Learn</a> |
+		<a href="../tuts/index.html">Tutorials</a> |
+		<a href="../api/index.html">API</a> |
+		<a href="https://www.facebook.com/photopea">Facebook</a> |
+		<a href="https://www.twitter.com/photopeacom">Twitter</a> 
+	</div>	
+	<div id="main" style="max-width:1000px;">
+		<div id="sidebar" style="width:22%;">
+			<h3>Topics</h3>
+			<ul>
+			<li class="lvl0"><a href="index.html">Introduction</a></li>
+			<li class="lvl0"><a href="workspace.html">Workspace</a></li>
+			<li class="lvl1"><a href="opening-saving.html">Open and Save</a></li>
+			<li class="lvl1"><a href="navigation.html">Navigation</a></li>
+			<li class="lvl1"><a href="image-size.html">Image size</a></li>
+			<li class="lvl0"><a href="layers.html">Layers</a></li>
+			<li class="lvl1"><a href="masks.html">Masks</a></li>
+			<li class="lvl1"><a href="layer-styles.html">Layer Styles</a></li>
+			<li class="lvl1"><a href="smart-objects.html">Smart Objects</a></li>
+			<li class="lvl1"><a href="other-layers.html">Other Layers</a></li>
+			<li class="lvl0"><a href="layer-manipulation.html">Layer Editing</a></li>
+			<li class="lvl1"><a href="free-transform.html">Free Transform</a></li>
+			<li class="lvl1"><a href="adjustments-filters.html">Adjust. &amp; Filters</a></li>
+			<li class="lvl0"><a href="selections.html">Selections</a></li>
+			<li class="lvl1"><a href="creating-selections.html">Make Selections</a></li>
+			<li class="lvl1 active"><a href="advanced-selecting.html">Advanced Selecting</a></li>
+			<li class="lvl1"><a href="refine-edge.html">Refine Edge</a></li>
+			<li class="lvl1"><a href="moving-selected-data.html">Move Selected Data</a></li>
+			<li class="lvl0"><a href="brush-tools.html">Brush Tools</a></li>
+			<li class="lvl1"><a href="bt-basic.html">Basic Tools</a></li>
+			<li class="lvl1"><a href="bt-advanced.html">Advanced Tools</a></li>
+			<li class="lvl1"><a href="bt-smart.html">Smart Tools</a></li>
+			<li class="lvl0"><a href="text.html">Text</a></li>
+			<li class="lvl1"><a href="text-style.html">Text Style</a></li>
+			<li class="lvl0"><a href="vector-graphics.html">Vector Graphics</a></li>
+			<li class="lvl1"><a href="vg-structure.html">The Structure</a></li>
+			<li class="lvl1"><a href="vg-manipulation.html">Editing Shapes</a></li>
+			<li class="lvl1"><a href="vg-creating.html">Creating Shapes</a></li>
+			<li class="lvl0"><a href="other.html">Other</a></li>
+			<li class="lvl1"><a href="guides-grid-snapping.html">Guides &amp; Snapping</a></li>
+			<li class="lvl1"><a href="animations.html">Animations</a></li>
+			<li class="lvl1"><a href="layer-comps.html">Layer Comps</a></li>
+			<li class="lvl1"><a href="scripts.html">Scripts</a></li>
+			</ul>
+		</div>
+		<div id="content" style="width:78%;">
+			<div class="post">			
+<h1>Advanced Selecting</h1>
+
+<p>We already know, how to make basic selections "manually", e.g. with the Ellipse Select or a Lasso tool.
+But making complex selections with these tools can take a lot of time. There are more advanced tools, that can help us.</p>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+     style="display:block; text-align:center;"
+     data-ad-layout="in-article"
+     data-ad-format="fluid"
+     data-ad-client="ca-pub-0885095539348241"
+     data-ad-slot="5352893134"></ins>
+<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+<h2><img class="inline" src="../img/tools/mwand.png" />Magic Wand</h2>
+
+<p>Magic wand allows you to select pixels with the same (or similar) color. Once you click somewhere with the Magic Wand,
+the pixel under the mouse will be selected, as well as all other pixels, that have a color similar to that pixel.</p>
+
+<p>There is a <b>Contiguous mode</b> option (in the top menu). When it is on, the Magic Wand will select only those similar pixels, 
+that are connected to the source pixel (i.e. it will select the whole area, that has the same color, but not other areas, which are separated from this area).
+When this option is disabled, the Magic Wand will select all similar pixels from the whole image, even if they are not conencted to the source pixel.</p>
+
+<p>Here you can see the result of clicking on the pixel (marked by the white cross) with the Contiguous mode enabled and disabled.</p>
+
+<img src="https://i.imgur.com/e1TVQ9Q.png" />
+
+<p>There is also a <b>Tolerance</b> parameter in the top menu, which defines how much similar colors you want to select 
+(larger values produce "wider" selections).</p>
+
+
+<h2><img class="inline" src="../img/tools/qselect.png" />Quick Selection</h2>
+
+<p>This is probably the most advanced selecting tool, that can really save your time. 
+For many people, this is the only selection tool they ever use.</p>
+
+<p>Quick Selection works like a brush, you can choose the brush tip diameter in the top menu.
+Then, draw strokes over the area, that you want to select. It adds each stroke to a selection, and it also gradually <b>expands</b> it
+into the surrounding area, selecting the related parts (similarly to a Magic Wand).</p>
+
+<p>Sometimes, the tool may go beyond the area, that you want to select, and select much greater part.
+Switch to the <b>Subtract</b> mode in the top menu (or hold the Alt key) and you can remove the unwanted parts in the same way.</p>
+
+<p>There is a hidden layer inside the Quick Selection tool. As you draw strokes with the New or Union mode, the tool draws into that layer with the white color.
+When you draw with the Subtract mode, the strokes are drawn using the black color. 
+This layer is used as a guide for the tool: white areas must always be inside the selection, black areas must not be in the selection,
+and the remaining area will be smartly deduced from this, by analyzing the actual image. 
+The more white and black strokes you specify, the more information the tool has for making a good selection.</p>
+
+<p>The <b>New</b> mode makes the tool forget all previously specified strokes and start over with an empty hidden layer.</p>
+
+<h2>Color Range</h2>
+
+<p>This tool allows us select a specific color from the image. Unlike the Magic Wand, which either fully selects or fully ignores the area, 
+Color range can create partial selections, depending on how much of that color is present in the area.</p>
+
+<p>Start the tool by pressing Select - Color Range. Next, click on the color (in the image), that you want to select.
+The Color Range window shows you the preview of the selection: the brightness corresponds to the degree of selection of each pixel. 
+E.g. if you click on the red t-shirt in the image, this t-shirt should be white in the preview, and other parts, that are not red, should be black in the preview.
+The <b>Fuziness</b> parameter lets you add also all similar colors to the selection, or select just the exact color that you clicked on.</p>
+
+			
+			</div>
+			
+			<h2 style="margin-top: 4em">Comments</h2>
+			<div id="disqus_thread"></div>
+			<script>   
+			(function() { // DON'T EDIT BELOW THIS LINE
+			var d = document, s = d.createElement('script');
+			s.src = 'https://learn-photopea.disqus.com/embed.js';
+			s.setAttribute('data-timestamp', +new Date());
+			(d.head || d.body).appendChild(s);
+			})();   
+			</script>	
+		</div>
+	</div>
+	<div id="footer">&copy; 2013-2018 support@photopea.com</div>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-4249565-43', 'auto');  ga('send', 'pageview');
+	</script>
+</div>
+</html>
